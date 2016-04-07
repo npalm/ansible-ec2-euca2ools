@@ -1,0 +1,6 @@
+**/.data
+**/.idea/**
+**/.gradle/**
+**/atlassian-ide-plugin.xml
+**/*.iml
+**/build/**

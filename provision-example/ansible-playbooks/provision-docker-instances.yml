@@ -1,0 +1,22 @@
+- name: Provision Demo Instances
+  hosts: tag_Name_DEMO
+  gather_facts: false
+  sudo: yes
+
+  - name: install locale
+    shell: locale-gen en_US en_US.UTF-8 nl_NL nl_NL.UTF-8
+
+  - name: reconfigure locales
+    shell: dpkg-reconfigure locales
+    register: out
+
+  - name: install list of packages needed for docker installation
+    apt: name="{{ item }}" state=installed
+    with_items:
+      - git
+      - curl
+    register: result_item
+
+  - debug: var=result_time
+
+  - debug:  var=result
